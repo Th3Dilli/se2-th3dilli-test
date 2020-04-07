@@ -60,8 +60,25 @@ public class MyGdxGame extends ApplicationAdapter {
 		instances.add(boardInstance);
 		Model player = assets.get("player.g3db", Model.class);
 		ModelInstance playerInstance = new ModelInstance(player);
-		playerInstance.transform.setTranslation(50,2f,50);
+		playerInstance.transform.setTranslation(46,2f,46);
 		instances.add(playerInstance);
+
+		Model player2 = assets.get("player.g3db", Model.class);
+		ModelInstance playerInstance2 = new ModelInstance(player2);
+		playerInstance2.transform.setTranslation(-46,2f,-46);
+		instances.add(playerInstance2);
+
+		Model player3 = assets.get("player.g3db", Model.class);
+		ModelInstance playerInstance3 = new ModelInstance(player3);
+		playerInstance3.transform.setTranslation(-46,2f,46);
+		instances.add(playerInstance3);
+
+		Model player4 = assets.get("player.g3db", Model.class);
+		ModelInstance playerInstance4 = new ModelInstance(player4);
+		playerInstance4.transform.setTranslation(46,2f,-46);
+		instances.add(playerInstance4);
+
+
 		loading = false;
 	}
 	
