@@ -61,9 +61,6 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64"
         
     }
-    android {
-        ndkVersion "21.0.6113669"
-    }
 }
 
 project(":core") {
