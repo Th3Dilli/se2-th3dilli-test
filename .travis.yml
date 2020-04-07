@@ -4,7 +4,7 @@
 # https://developer.android.com/training/testing/unit-testing/instrumented-unit-tests.html
 
 language: android
-jdk: oraclejdk11
+jdk: oraclejdk8
 sudo: required
 
 before_cache:
