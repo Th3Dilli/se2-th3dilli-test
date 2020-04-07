@@ -37,7 +37,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		camController = new CameraInputController(cam);
 		Gdx.input.setInputProcessor(camController);
 		assets = new AssetManager();
-		assets.load("board.g3db", Model.class);
+		assets.load("board.g3gdb", Model.class);
 		assets.load("player.g3db", Model.class);
 		loading = true;
 	}
@@ -58,26 +58,24 @@ public class MyGdxGame extends ApplicationAdapter {
 		Model board = assets.get("board.g3db", Model.class);
 		ModelInstance boardInstance = new ModelInstance(board);
 		instances.add(boardInstance);
+
 		Model player = assets.get("player.g3db", Model.class);
+
 		ModelInstance playerInstance = new ModelInstance(player);
 		playerInstance.transform.setTranslation(46,2f,46);
 		instances.add(playerInstance);
 
-		Model player2 = assets.get("player.g3db", Model.class);
-		ModelInstance playerInstance2 = new ModelInstance(player2);
+		ModelInstance playerInstance2 = new ModelInstance(player);
 		playerInstance2.transform.setTranslation(-46,2f,-46);
 		instances.add(playerInstance2);
 
-		Model player3 = assets.get("player.g3db", Model.class);
-		ModelInstance playerInstance3 = new ModelInstance(player3);
+		ModelInstance playerInstance3 = new ModelInstance(player);
 		playerInstance3.transform.setTranslation(-46,2f,46);
 		instances.add(playerInstance3);
 
-		Model player4 = assets.get("player.g3db", Model.class);
-		ModelInstance playerInstance4 = new ModelInstance(player4);
+		ModelInstance playerInstance4 = new ModelInstance(player);
 		playerInstance4.transform.setTranslation(46,2f,-46);
 		instances.add(playerInstance4);
-
 
 		loading = false;
 	}
