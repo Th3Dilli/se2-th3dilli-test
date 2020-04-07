@@ -4,7 +4,7 @@
 # https://developer.android.com/training/testing/unit-testing/instrumented-unit-tests.html
 
 language: android
-jdk: oraclejdk8
+jdk: oraclejdk11
 sudo: required
 
 before_cache:
@@ -40,7 +40,7 @@ script:
   ## uncomment test exec if android integration tests are needed
   #  - ./gradlew connectedAndroidTest
   - ./gradlew lint
-  - sonarqube
+  - ./gradlew sonarqube
 
 addons:
   sonarcloud:
