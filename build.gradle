@@ -86,7 +86,7 @@ project(":core") {
 
     sonarqube {
         properties {
-            property "sonar.projectKey", "Th3Dilli_se2-th3dilli-test"
+            property "sonar.projectKey", "se2-th3dilli-test"
         }
     }
     project.tasks["sonarqube"].dependsOn "jacocoTestReport"
@@ -109,7 +109,7 @@ project(":server") {
 
     sonarqube {
         properties {
-            property "sonar.projectKey", "Th3Dilli_se2-th3dilli-test"
+            property "sonar.projectKey", "se2-th3dilli-test"
         }
     }
     project.tasks["sonarqube"].dependsOn "jacocoTestReport"
