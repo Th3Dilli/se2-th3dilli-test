@@ -1,11 +1,41 @@
-apply plugin: "java"
-
-sourceCompatibility = 1.7
-dependencies {
+plugins {
+    id 'java'
+    id 'application'
+    id 'jacoco'
+    id 'org.sonarqube'
 }
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+application {
+    mainClassName = "Server.Server"
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+//[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 sourceSets.main.java.srcDirs = [ "src/main/java/" ]
 sourceSets.test.java.srcDirs = [ "src/test/java/" ]
-sourceSets.test.resources.srcDirs = [ "src/test/res/" ]
 
+dependencies {
+    implementation project(":common")
+    testImplementation "junit:junit:$junitVersion"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class' : 'com.mygdx.Server.Server'
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "se2-th3dilli-test"
+    }
+}
+project.tasks["sonarqube"].dependsOn "jacocoTestReport"
