@@ -12,7 +12,7 @@ application {
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 
-//[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 sourceSets.main.java.srcDirs = [ "src/main/java/" ]
 sourceSets.test.java.srcDirs = [ "src/test/java/" ]
@@ -36,3 +36,7 @@ sonarqube {
 }
 
 project.tasks["sonarqube"].dependsOn "jacocoTestReport"
+
+run {
+    standardInput = System.in
+}
