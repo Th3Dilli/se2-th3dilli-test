@@ -1,4 +1,3 @@
 include 'android', 'core'
-include 'common'
 include 'server'
 

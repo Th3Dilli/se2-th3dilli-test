@@ -1,7 +1,6 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g3d.*;
@@ -10,7 +9,7 @@ import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.utils.Array;
 
-public class MyGdxGame extends ApplicationAdapter {
+public class MyGdxGame extends ScreenAdapter {
 	public PerspectiveCamera cam;
 	public Model model;
 	public ModelInstance instance;
@@ -20,8 +19,14 @@ public class MyGdxGame extends ApplicationAdapter {
 	public AssetManager assets;
 	public boolean loading;
 	public Array<ModelInstance> instances = new Array<ModelInstance>();
-	
-	@Override
+	private Game game;
+
+	public MyGdxGame(MainGame game) {
+		this.game = game;
+		create();
+	}
+
+
 	public void create () {
 		environment = new Environment();
 		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
@@ -44,7 +49,12 @@ public class MyGdxGame extends ApplicationAdapter {
 	}
 
 	@Override
-	public void render () {
+	public void resize(int width, int height) {
+
+	}
+
+	@Override
+	public void render (float delta) {
 		if (loading && assets.update())
 			doneLoading();
 		Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -55,6 +65,17 @@ public class MyGdxGame extends ApplicationAdapter {
 		modelBatch.end();
 		camController.update();
 	}
+
+	@Override
+	public void pause() {
+
+	}
+
+	@Override
+	public void resume() {
+
+	}
+
 	private void doneLoading() {
 		Model board = assets.get("board.g3db", Model.class);
 		ModelInstance boardInstance = new ModelInstance(board);
