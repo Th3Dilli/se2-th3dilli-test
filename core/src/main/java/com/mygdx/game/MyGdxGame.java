@@ -10,7 +10,8 @@ import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.utils.Array;
 
-public class MyGdxGame extends ApplicationAdapter {
+public class MyGdxGame extends ApplicationAdapter{
+
 	public PerspectiveCamera cam;
 	public Model model;
 	public ModelInstance instance;
