@@ -18,7 +18,6 @@ public class TitleScreen extends ScreenAdapter {
     OrthographicCamera guiCam;
     Rectangle joinBounds;
     Vector3 touchPoint;
-    Texture join;
 
     public TitleScreen(MainGame game) {
         this.game = game;
@@ -52,7 +51,6 @@ public class TitleScreen extends ScreenAdapter {
         guiCam.update();
         game.batcher.setProjectionMatrix(guiCam.combined);
 
-
         game.batcher.enableBlending();
         game.batcher.begin();
         game.batcher.draw(Assets.join, 160 - 150, 200 + 18, 100, 40);
@@ -68,86 +66,3 @@ public class TitleScreen extends ScreenAdapter {
 
 
 }
-    /*
-    {
-    private SpriteBatch batch;
-    private BitmapFont font;
-
-    private String textInitial;
-    private String dialogue;
-    private String message;
-    private Game game;
-    private Stage stage;
-
-    private boolean check;
-
-    public TitleScreen(Game game) {
-        this.game = game;
-
-
-    }
-
-
-    @Override
-    public void show() {
-        textInitial = "What is your name? ";
-        dialogue = "Welcome";
-
-        batch = new SpriteBatch();
-        font = new BitmapFont();
-
-
-        Gdx.input.getTextInput(new TextInputListener() {
-            @Override
-            public void input(String text) {
-                message = "Hi " + text + " welcome to the server.";
-                check = true;
-            }
-
-            @Override
-            public void canceled() {
-                message = "Good bye";
-                check = false;
-            }
-        }, dialogue, textInitial, "Hint");
-    }
-
-    @Override
-    public void render(float delta) {
-
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        if (check) {
-            batch.begin();
-            font.getData().setScale(3f);
-            font.draw(batch, message, 100, 200);
-            batch.end();
-        }
-
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
-    }
-}
-*/

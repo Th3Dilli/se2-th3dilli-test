@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.*;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.*;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
@@ -19,11 +20,14 @@ public class MyGdxGame extends ScreenAdapter {
 	public AssetManager assets;
 	public boolean loading;
 	public Array<ModelInstance> instances = new Array<ModelInstance>();
-	private Game game;
+	private MainGame game;
+	private Hud hud;
 
 	public MyGdxGame(MainGame game) {
 		this.game = game;
+		this.hud = new Hud(game.batcher);
 		create();
+
 	}
 
 
@@ -63,8 +67,21 @@ public class MyGdxGame extends ScreenAdapter {
 		modelBatch.begin(cam);
 		modelBatch.render(instances, environment);
 		modelBatch.end();
+		drawHud();
 		camController.update();
+
 	}
+
+
+	public void drawHud(){
+		game.batcher.setProjectionMatrix(hud.stage.getCamera().combined);
+		game.batcher.enableBlending();
+		game.batcher.begin();
+		game.font.draw(game.batcher, "Balance: ", 20, 140);
+		game.font.draw(game.batcher,Hud.getFormattedMoney(), 20,60);
+		game.batcher.end();
+	}
+
 
 	@Override
 	public void pause() {
@@ -85,6 +102,7 @@ public class MyGdxGame extends ScreenAdapter {
 		playerInstance.transform.setTranslation(50,2f,50);
 		instances.add(playerInstance);
 		loading = false;
+
 	}
 	
 	@Override
